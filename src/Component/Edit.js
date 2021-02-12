@@ -7,7 +7,7 @@ const Edit = ({el}) => {
     const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [myInputEdit, setmyInputEdit] = useState("");
+  const [myInputEdit, setmyInputEdit] = useState(el.text);
   const dispatch = useDispatch()
 
     return (
@@ -23,9 +23,10 @@ const Edit = ({el}) => {
         </Modal.Header>
         
         <FormControl
-      placeholder={el.text}
+    
       aria-label="Username"
       aria-describedby="basic-addon1"
+      value={myInputEdit}
       onChange={(e)=>setmyInputEdit(e.target.value)}
       
     />

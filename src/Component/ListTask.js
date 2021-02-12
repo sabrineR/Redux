@@ -13,14 +13,16 @@ const ListTask = () => {
   
     return (
         <div>
-             {list.map(el=>(  
+             {list.map((el,i)=>(  
 
-<Card style={{ width: '60rem', margin:'30px' }}>
+<Card style={{ width: '60rem', margin:'30px' }} key={i}>
 
 <ListGroup variant="flush">
   <ListGroup.Item style={{display:'flex',justifyContent:'space-between'}}>
-    {el.isDone?<span style={{textDecoration:'line-through'}}>{el.text}</span> :<span>{el.text}</span> }
-     {/* <span style={el.isDone?{textDecoration:'line-through'}:{textDecoration:null}}>{el.text}</span>  */}
+   
+    <span style={el.isDone?{textDecoration:'line-through'}:{textDecoration:''}}>{el.text}</span>  
+
+
 <div style={{display:'flex',justifyContent:'space-between'}}>
 <Edit el ={el}/>
        
@@ -30,7 +32,7 @@ const ListTask = () => {
              >Delete</Button>
              <Button variant="info" style={{marginLeft:'10px',marginRight:'10px'}} 
             onClick={()=>dispatch(done(el.id))}
-            >isDone</Button>
+            >{el.isDone?"Undone":"Done"}</Button>
             
              </div>
   </ListGroup.Item>

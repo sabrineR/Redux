@@ -17,6 +17,7 @@ const AddItems = () => {
     <InputGroup className="mb-3">
     <FormControl
       aria-label="Recipient's username"
+      value={myInput}
       aria-describedby="basic-addon2" onChange={(e)=>setmyInput(e.target.value)}
     />
     <InputGroup.Append>

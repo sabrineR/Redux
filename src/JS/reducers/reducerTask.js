@@ -15,33 +15,15 @@ export const reducerTask = (state=initialState,{type,payload}) => {
                 }
                 case DELETE:
                     return{
-                        ...state,list:state.list.filter((el)=>el.id!=payload)
+                        ...state,list:state.list.filter((el)=>el.id!==payload)
                     }
             case DONE :
                 return{
-                    ...state,list:state.list.map((el)=> {
-                        if(el.id===payload){
-                        return ({
-                            ...el,isDone:!el.isDone
-                        })
-                        }
-                        else {
-                            el;
-                        }
-                    }
-                    )
+                    ...state,list:state.list.map((el)=> el.id===payload? {...el, isDone:!el.isDone}:el )
                 }
             case EDIT :
                 return{
-                    ...state,list:state.list.map(el=>{
-                        if(el.id===payload.id){
-                            return({
-                                ...el,text:payload.myInputEdit
-                            })
-                        }else{
-                            el;
-                        }
-                    })
+                    ...state,list:state.list.map(el=>el.id===payload.id?{...el,text:payload.myInputEdit}:el )
                 }
 
 
